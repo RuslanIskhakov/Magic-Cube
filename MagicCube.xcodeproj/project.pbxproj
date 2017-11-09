@@ -12,8 +12,14 @@
 		BA2950FD1FB416230071205C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2950FB1FB416230071205C /* Main.storyboard */; };
 		BA2950FF1FB416230071205C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2950FE1FB416230071205C /* Assets.xcassets */; };
 		BA2951021FB416230071205C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2951001FB416230071205C /* LaunchScreen.storyboard */; };
-		BA29510D1FB416230071205C /* Magic_CubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29510C1FB416230071205C /* Magic_CubeTests.swift */; };
 		BA2951181FB416230071205C /* Magic_CubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951171FB416230071205C /* Magic_CubeUITests.swift */; };
+		BA2951271FB417560071205C /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951261FB417560071205C /* CubeModel.swift */; };
+		BA29512D1FB42D800071205C /* CubeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29512C1FB42D800071205C /* CubeLine.swift */; };
+		BA29512F1FB42F5A0071205C /* CubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29512E1FB42F5A0071205C /* CubeCell.swift */; };
+		BA2951311FB43E900071205C /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951301FB43E900071205C /* CellPosition.swift */; };
+		BA2951331FB4407F0071205C /* CubeSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951321FB4407F0071205C /* CubeSide.swift */; };
+		BA2951351FB4425B0071205C /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951341FB4425B0071205C /* Cube.swift */; };
+		BA2951371FB45F420071205C /* Magic_Cube_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,19 +40,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BA2950F41FB416230071205C /* Magic Cube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Cube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2950F41FB416230071205C /* MagicCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2950F71FB416230071205C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA2950F91FB416230071205C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA2950FC1FB416230071205C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA2950FE1FB416230071205C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA2951011FB416230071205C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA2951031FB416230071205C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA2951081FB416230071205C /* Magic CubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic CubeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA29510C1FB416230071205C /* Magic_CubeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_CubeTests.swift; sourceTree = "<group>"; };
+		BA2951081FB416230071205C /* MagicCubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicCubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA29510E1FB416230071205C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA2951131FB416230071205C /* Magic CubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic CubeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA2951131FB416230071205C /* MagicCubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicCubeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2951171FB416230071205C /* Magic_CubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_CubeUITests.swift; sourceTree = "<group>"; };
 		BA2951191FB416230071205C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA2951261FB417560071205C /* CubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
+		BA29512C1FB42D800071205C /* CubeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeLine.swift; sourceTree = "<group>"; };
+		BA29512E1FB42F5A0071205C /* CubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeCell.swift; sourceTree = "<group>"; };
+		BA2951301FB43E900071205C /* CellPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
+		BA2951321FB4407F0071205C /* CubeSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSide.swift; sourceTree = "<group>"; };
+		BA2951341FB4425B0071205C /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_Cube_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +89,9 @@
 		BA2950EB1FB416230071205C = {
 			isa = PBXGroup;
 			children = (
-				BA2950F61FB416230071205C /* Magic Cube */,
-				BA29510B1FB416230071205C /* Magic CubeTests */,
-				BA2951161FB416230071205C /* Magic CubeUITests */,
+				BA2950F61FB416230071205C /* MagicCube */,
+				BA29510B1FB416230071205C /* MagicCubeTests */,
+				BA2951161FB416230071205C /* MagicCubeUITests */,
 				BA2950F51FB416230071205C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,16 +99,17 @@
 		BA2950F51FB416230071205C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA2950F41FB416230071205C /* Magic Cube.app */,
-				BA2951081FB416230071205C /* Magic CubeTests.xctest */,
-				BA2951131FB416230071205C /* Magic CubeUITests.xctest */,
+				BA2950F41FB416230071205C /* MagicCube.app */,
+				BA2951081FB416230071205C /* MagicCubeTests.xctest */,
+				BA2951131FB416230071205C /* MagicCubeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA2950F61FB416230071205C /* Magic Cube */ = {
+		BA2950F61FB416230071205C /* MagicCube */ = {
 			isa = PBXGroup;
 			children = (
+				BA2951251FB4172D0071205C /* CubeModel */,
 				BA2950F71FB416230071205C /* AppDelegate.swift */,
 				BA2950F91FB416230071205C /* ViewController.swift */,
 				BA2950FB1FB416230071205C /* Main.storyboard */,
@@ -104,33 +117,46 @@
 				BA2951001FB416230071205C /* LaunchScreen.storyboard */,
 				BA2951031FB416230071205C /* Info.plist */,
 			);
-			path = "Magic Cube";
+			path = MagicCube;
 			sourceTree = "<group>";
 		};
-		BA29510B1FB416230071205C /* Magic CubeTests */ = {
+		BA29510B1FB416230071205C /* MagicCubeTests */ = {
 			isa = PBXGroup;
 			children = (
-				BA29510C1FB416230071205C /* Magic_CubeTests.swift */,
+				BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */,
 				BA29510E1FB416230071205C /* Info.plist */,
 			);
-			path = "Magic CubeTests";
+			path = MagicCubeTests;
 			sourceTree = "<group>";
 		};
-		BA2951161FB416230071205C /* Magic CubeUITests */ = {
+		BA2951161FB416230071205C /* MagicCubeUITests */ = {
 			isa = PBXGroup;
 			children = (
 				BA2951171FB416230071205C /* Magic_CubeUITests.swift */,
 				BA2951191FB416230071205C /* Info.plist */,
 			);
-			path = "Magic CubeUITests";
+			path = MagicCubeUITests;
+			sourceTree = "<group>";
+		};
+		BA2951251FB4172D0071205C /* CubeModel */ = {
+			isa = PBXGroup;
+			children = (
+				BA2951261FB417560071205C /* CubeModel.swift */,
+				BA29512C1FB42D800071205C /* CubeLine.swift */,
+				BA29512E1FB42F5A0071205C /* CubeCell.swift */,
+				BA2951301FB43E900071205C /* CellPosition.swift */,
+				BA2951321FB4407F0071205C /* CubeSide.swift */,
+				BA2951341FB4425B0071205C /* Cube.swift */,
+			);
+			path = CubeModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BA2950F31FB416230071205C /* Magic Cube */ = {
+		BA2950F31FB416230071205C /* MagicCube */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA29511C1FB416230071205C /* Build configuration list for PBXNativeTarget "Magic Cube" */;
+			buildConfigurationList = BA29511C1FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCube" */;
 			buildPhases = (
 				BA2950F01FB416230071205C /* Sources */,
 				BA2950F11FB416230071205C /* Frameworks */,
@@ -140,14 +166,14 @@
 			);
 			dependencies = (
 			);
-			name = "Magic Cube";
+			name = MagicCube;
 			productName = "Magic Cube";
-			productReference = BA2950F41FB416230071205C /* Magic Cube.app */;
+			productReference = BA2950F41FB416230071205C /* MagicCube.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BA2951071FB416230071205C /* Magic CubeTests */ = {
+		BA2951071FB416230071205C /* MagicCubeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA29511F1FB416230071205C /* Build configuration list for PBXNativeTarget "Magic CubeTests" */;
+			buildConfigurationList = BA29511F1FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCubeTests" */;
 			buildPhases = (
 				BA2951041FB416230071205C /* Sources */,
 				BA2951051FB416230071205C /* Frameworks */,
@@ -158,14 +184,14 @@
 			dependencies = (
 				BA29510A1FB416230071205C /* PBXTargetDependency */,
 			);
-			name = "Magic CubeTests";
+			name = MagicCubeTests;
 			productName = "Magic CubeTests";
-			productReference = BA2951081FB416230071205C /* Magic CubeTests.xctest */;
+			productReference = BA2951081FB416230071205C /* MagicCubeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BA2951121FB416230071205C /* Magic CubeUITests */ = {
+		BA2951121FB416230071205C /* MagicCubeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA2951221FB416230071205C /* Build configuration list for PBXNativeTarget "Magic CubeUITests" */;
+			buildConfigurationList = BA2951221FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCubeUITests" */;
 			buildPhases = (
 				BA29510F1FB416230071205C /* Sources */,
 				BA2951101FB416230071205C /* Frameworks */,
@@ -176,9 +202,9 @@
 			dependencies = (
 				BA2951151FB416230071205C /* PBXTargetDependency */,
 			);
-			name = "Magic CubeUITests";
+			name = MagicCubeUITests;
 			productName = "Magic CubeUITests";
-			productReference = BA2951131FB416230071205C /* Magic CubeUITests.xctest */;
+			productReference = BA2951131FB416230071205C /* MagicCubeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +233,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BA2950EF1FB416230071205C /* Build configuration list for PBXProject "Magic Cube" */;
+			buildConfigurationList = BA2950EF1FB416230071205C /* Build configuration list for PBXProject "MagicCube" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,9 +246,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BA2950F31FB416230071205C /* Magic Cube */,
-				BA2951071FB416230071205C /* Magic CubeTests */,
-				BA2951121FB416230071205C /* Magic CubeUITests */,
+				BA2950F31FB416230071205C /* MagicCube */,
+				BA2951071FB416230071205C /* MagicCubeTests */,
+				BA2951121FB416230071205C /* MagicCubeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,6 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2951331FB4407F0071205C /* CubeSide.swift in Sources */,
+				BA29512D1FB42D800071205C /* CubeLine.swift in Sources */,
+				BA2951271FB417560071205C /* CubeModel.swift in Sources */,
+				BA2951311FB43E900071205C /* CellPosition.swift in Sources */,
+				BA2951351FB4425B0071205C /* Cube.swift in Sources */,
+				BA29512F1FB42F5A0071205C /* CubeCell.swift in Sources */,
 				BA2950FA1FB416230071205C /* ViewController.swift in Sources */,
 				BA2950F81FB416230071205C /* AppDelegate.swift in Sources */,
 			);
@@ -268,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA29510D1FB416230071205C /* Magic_CubeTests.swift in Sources */,
+				BA2951371FB45F420071205C /* Magic_Cube_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,12 +317,12 @@
 /* Begin PBXTargetDependency section */
 		BA29510A1FB416230071205C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA2950F31FB416230071205C /* Magic Cube */;
+			target = BA2950F31FB416230071205C /* MagicCube */;
 			targetProxy = BA2951091FB416230071205C /* PBXContainerItemProxy */;
 		};
 		BA2951151FB416230071205C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BA2950F31FB416230071205C /* Magic Cube */;
+			target = BA2950F31FB416230071205C /* MagicCube */;
 			targetProxy = BA2951141FB416230071205C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -428,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic Cube/Info.plist";
+				INFOPLIST_FILE = MagicCube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-Cube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,7 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic Cube/Info.plist";
+				INFOPLIST_FILE = MagicCube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-Cube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,13 +491,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic CubeTests/Info.plist";
+				INFOPLIST_FILE = MagicCubeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-CubeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Magic Cube.app/Magic Cube";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MagicCube.app/MagicCube";
 			};
 			name = Debug;
 		};
@@ -476,13 +508,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic CubeTests/Info.plist";
+				INFOPLIST_FILE = MagicCubeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-CubeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Magic Cube.app/Magic Cube";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MagicCube.app/MagicCube";
 			};
 			name = Release;
 		};
@@ -492,13 +524,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic CubeUITests/Info.plist";
+				INFOPLIST_FILE = MagicCubeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-CubeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Magic Cube";
+				TEST_TARGET_NAME = MagicCube;
 			};
 			name = Debug;
 		};
@@ -508,20 +540,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A43ZVNV86W;
-				INFOPLIST_FILE = "Magic CubeUITests/Info.plist";
+				INFOPLIST_FILE = MagicCubeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltasoft.Magic-CubeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Magic Cube";
+				TEST_TARGET_NAME = MagicCube;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BA2950EF1FB416230071205C /* Build configuration list for PBXProject "Magic Cube" */ = {
+		BA2950EF1FB416230071205C /* Build configuration list for PBXProject "MagicCube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA29511A1FB416230071205C /* Debug */,
@@ -530,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA29511C1FB416230071205C /* Build configuration list for PBXNativeTarget "Magic Cube" */ = {
+		BA29511C1FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA29511D1FB416230071205C /* Debug */,
@@ -539,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA29511F1FB416230071205C /* Build configuration list for PBXNativeTarget "Magic CubeTests" */ = {
+		BA29511F1FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCubeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA2951201FB416230071205C /* Debug */,
@@ -548,7 +580,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA2951221FB416230071205C /* Build configuration list for PBXNativeTarget "Magic CubeUITests" */ = {
+		BA2951221FB416230071205C /* Build configuration list for PBXNativeTarget "MagicCubeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA2951231FB416230071205C /* Debug */,
