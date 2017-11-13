@@ -20,6 +20,11 @@
 		BA2951331FB4407F0071205C /* CubeSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951321FB4407F0071205C /* CubeSide.swift */; };
 		BA2951351FB4425B0071205C /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951341FB4425B0071205C /* Cube.swift */; };
 		BA2951371FB45F420071205C /* Magic_Cube_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */; };
+		BAFC18B41FB565B400195F03 /* ViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC18B31FB565B400195F03 /* ViewPresenter.swift */; };
+		BAFC18B61FB565D700195F03 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC18B51FB565D700195F03 /* ViewModel.swift */; };
+		BAFC18B81FB580F000195F03 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC18B71FB580F000195F03 /* PresenterProtocol.swift */; };
+		BAFC18BA1FB5810000195F03 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC18B91FB5810000195F03 /* ViewProtocol.swift */; };
+		BAFC18BC1FB5810E00195F03 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFC18BB1FB5810E00195F03 /* ModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		BA2951321FB4407F0071205C /* CubeSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSide.swift; sourceTree = "<group>"; };
 		BA2951341FB4425B0071205C /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_Cube_Tests.swift; sourceTree = "<group>"; };
+		BAFC18B31FB565B400195F03 /* ViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresenter.swift; sourceTree = "<group>"; };
+		BAFC18B51FB565D700195F03 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BAFC18B71FB580F000195F03 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
+		BAFC18B91FB5810000195F03 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		BAFC18BB1FB5810E00195F03 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +119,9 @@
 		BA2950F61FB416230071205C /* MagicCube */ = {
 			isa = PBXGroup;
 			children = (
+				BAFC18B21FB5654C00195F03 /* MVP */,
 				BA2951251FB4172D0071205C /* CubeModel */,
 				BA2950F71FB416230071205C /* AppDelegate.swift */,
-				BA2950F91FB416230071205C /* ViewController.swift */,
-				BA2950FB1FB416230071205C /* Main.storyboard */,
 				BA2950FE1FB416230071205C /* Assets.xcassets */,
 				BA2951001FB416230071205C /* LaunchScreen.storyboard */,
 				BA2951031FB416230071205C /* Info.plist */,
@@ -149,6 +158,20 @@
 				BA2951341FB4425B0071205C /* Cube.swift */,
 			);
 			path = CubeModel;
+			sourceTree = "<group>";
+		};
+		BAFC18B21FB5654C00195F03 /* MVP */ = {
+			isa = PBXGroup;
+			children = (
+				BA2950FB1FB416230071205C /* Main.storyboard */,
+				BA2950F91FB416230071205C /* ViewController.swift */,
+				BAFC18B31FB565B400195F03 /* ViewPresenter.swift */,
+				BAFC18B51FB565D700195F03 /* ViewModel.swift */,
+				BAFC18B71FB580F000195F03 /* PresenterProtocol.swift */,
+				BAFC18B91FB5810000195F03 /* ViewProtocol.swift */,
+				BAFC18BB1FB5810E00195F03 /* ModelProtocol.swift */,
+			);
+			path = MVP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,14 +308,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFC18B41FB565B400195F03 /* ViewPresenter.swift in Sources */,
 				BA2951331FB4407F0071205C /* CubeSide.swift in Sources */,
 				BA29512D1FB42D800071205C /* CubeLine.swift in Sources */,
 				BA2951271FB417560071205C /* CubeModel.swift in Sources */,
 				BA2951311FB43E900071205C /* CellPosition.swift in Sources */,
+				BAFC18B61FB565D700195F03 /* ViewModel.swift in Sources */,
 				BA2951351FB4425B0071205C /* Cube.swift in Sources */,
+				BAFC18BC1FB5810E00195F03 /* ModelProtocol.swift in Sources */,
 				BA29512F1FB42F5A0071205C /* CubeCell.swift in Sources */,
 				BA2950FA1FB416230071205C /* ViewController.swift in Sources */,
 				BA2950F81FB416230071205C /* AppDelegate.swift in Sources */,
+				BAFC18BA1FB5810000195F03 /* ViewProtocol.swift in Sources */,
+				BAFC18B81FB580F000195F03 /* PresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,10 +423,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.1;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -446,9 +474,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.1;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
