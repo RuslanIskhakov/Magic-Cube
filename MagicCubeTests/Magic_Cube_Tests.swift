@@ -82,7 +82,7 @@ class Magic_Cube_Tests: XCTestCase {
                 }
             }
             
-            var cube = Cube.newSolvedCube(size: size)
+            let cube = Cube.newSolvedCube(size: size)
             XCTAssertNotNil(cube)
             XCTAssert(size==cube?.size)
             

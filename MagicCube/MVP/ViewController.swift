@@ -20,7 +20,8 @@ class ViewController: UIViewController, ViewProtocol {
     private var presenter: PresenterProtocol?
     private var isSetUp = false
     
-    var currentAngle: Float = 0.0
+    var currentXAngle: Float = 0.0
+    var currentYAngle: Float = 0.0
     var cameraNode: SCNNode = SCNNode()
     var geometryNode: SCNNode = SCNNode()
     var scene: SCNScene = SCNScene()
@@ -65,12 +66,23 @@ class ViewController: UIViewController, ViewProtocol {
     }
     
     func sceneSetup() {
-        //let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(sender:)))
-        //sceneView.addGestureRecognizer(panRecognizer)
+        let boxGeometry = SCNBox(
+            width: CGFloat(0.1*CubeModel.ScaleUnit),
+            height: CGFloat(0.1*CubeModel.ScaleUnit),
+            length: CGFloat(0.1*CubeModel.ScaleUnit),
+            chamferRadius: 0.0)
+        boxGeometry.firstMaterial?.diffuse.contents = UIColor.white
+        boxGeometry.firstMaterial?.specular.contents = UIColor.white
+        
+        geometryNode = SCNNode(geometry: boxGeometry)
+        scene.rootNode.addChildNode(geometryNode)
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(sender:)))
+        sceneView.addGestureRecognizer(panRecognizer)
         
         sceneView.scene = scene
         sceneView.showsStatistics = true
-        sceneView.allowsCameraControl = true
+        //sceneView.allowsCameraControl = true
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -78,27 +90,41 @@ class ViewController: UIViewController, ViewProtocol {
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         
-        let omniLightNode = SCNNode()
-        omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLight.LightType.omni
-        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.position = SCNVector3Make(0, 50, 50)
-        scene.rootNode.addChildNode(omniLightNode)
+        addOmniLight(0, 50, 50)
+        addOmniLight(0, 50, -50)
+        addOmniLight(0, -50, 50)
+        addOmniLight(0, -50, -50)
+        addOmniLight(0, 0, 50)
+        addOmniLight(0, 0, -50)
         
         cameraNode.camera = SCNCamera()
         scene.rootNode.addChildNode(cameraNode)
     }
     
+    private func addOmniLight(_ x: Float, _ y: Float, _ z: Float) {
+        let omniLightNode = SCNNode()
+        omniLightNode.light = SCNLight()
+        omniLightNode.light!.type = SCNLight.LightType.omni
+        omniLightNode.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode.position = SCNVector3Make(x, y, z)
+        scene.rootNode.addChildNode(omniLightNode)
+    }
+    
     @objc
     func panGesture(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: sender.view!)
-        var newAngle = (Float)(translation.x)*(Float)(Double.pi)/180.0
-        newAngle += currentAngle
         
-        geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
+        var newXAngle = (Float)(translation.y)*(Float)(Double.pi)/180.0
+        newXAngle += currentXAngle
+        var newYAngle = (Float)(translation.x)*(Float)(Double.pi)/180.0
+        newYAngle += currentYAngle
+        
+        geometryNode.eulerAngles.x = newXAngle
+        geometryNode.eulerAngles.y = newYAngle
         
         if(sender.state == UIGestureRecognizerState.ended) {
-            currentAngle = newAngle
+            currentXAngle = newXAngle
+            currentYAngle = newYAngle
         }
     }
 
@@ -138,7 +164,7 @@ class ViewController: UIViewController, ViewProtocol {
                         CubeModel.ScaleUnit * Float(x) - positionShift,
                         CubeModel.ScaleUnit * Float(y) - positionShift,
                         CubeModel.ScaleUnit * Float(z) - positionShift)
-                    scene.rootNode.addChildNode(boxNode)
+                    geometryNode.addChildNode(boxNode)
                 }
             }
         }
@@ -161,7 +187,7 @@ class ViewController: UIViewController, ViewProtocol {
                     let cellPosition = CubeModel.getCellRenderCoordinates(side: side.side, cubeSize: side.size, x: x, y: y, shift: positionShift)
                     let cellNode = SCNNode(geometry: cellGeometry)
                     cellNode.position = SCNVector3Make(cellPosition.x, cellPosition.y, cellPosition.z)
-                    scene.rootNode.addChildNode(cellNode)
+                    geometryNode.addChildNode(cellNode)
                 }
             }
         }
