@@ -23,7 +23,8 @@ class ViewController: UIViewController, ViewProtocol {
     var currentXAngle: Float = 0.0
     var currentYAngle: Float = 0.0
     var cameraNode: SCNNode = SCNNode()
-    var geometryNode: SCNNode = SCNNode()
+    var geometryNode1: SCNNode = SCNNode()
+    var geometryNode2: SCNNode = SCNNode()
     var scene: SCNScene = SCNScene()
     
     override func viewDidLoad() {
@@ -74,8 +75,10 @@ class ViewController: UIViewController, ViewProtocol {
         boxGeometry.firstMaterial?.diffuse.contents = UIColor.white
         boxGeometry.firstMaterial?.specular.contents = UIColor.white
         
-        geometryNode = SCNNode(geometry: boxGeometry)
-        scene.rootNode.addChildNode(geometryNode)
+        geometryNode1 = SCNNode(geometry: boxGeometry)
+        geometryNode2 = SCNNode(geometry: boxGeometry)
+        scene.rootNode.addChildNode(geometryNode1)
+        geometryNode1.addChildNode(geometryNode2)
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGesture(sender:)))
         sceneView.addGestureRecognizer(panRecognizer)
@@ -112,19 +115,20 @@ class ViewController: UIViewController, ViewProtocol {
     
     @objc
     func panGesture(sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: sender.view!)
         
-        var newXAngle = (Float)(translation.y)*(Float)(Double.pi)/180.0
-        newXAngle += currentXAngle
-        var newYAngle = (Float)(translation.x)*(Float)(Double.pi)/180.0
-        newYAngle += currentYAngle
+        let translation = sender.translation(in: sceneView)
+        let newXAngle = -(Float)(translation.y)*(Float)(Double.pi)/180.0
+        let newYAngle = -(Float)(translation.x)*(Float)(Double.pi)/180.0
+        let xAngle = SCNMatrix4MakeRotation(currentXAngle + newXAngle, 1, 0, 0)
+        let yAngle = SCNMatrix4MakeRotation(currentYAngle + newYAngle, 0, 1, 0)
+        let zAngle = SCNMatrix4MakeRotation(0, 0, 0, 0)
         
-        geometryNode.eulerAngles.x = newXAngle
-        geometryNode.eulerAngles.y = newYAngle
+        let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
+        geometryNode1.pivot = rotationMatrix
         
-        if(sender.state == UIGestureRecognizerState.ended) {
-            currentXAngle = newXAngle
-            currentYAngle = newYAngle
+        if sender.state == UIGestureRecognizerState.ended {
+            currentXAngle += newXAngle
+            currentYAngle += newYAngle
         }
     }
 
@@ -164,7 +168,7 @@ class ViewController: UIViewController, ViewProtocol {
                         CubeModel.ScaleUnit * Float(x) - positionShift,
                         CubeModel.ScaleUnit * Float(y) - positionShift,
                         CubeModel.ScaleUnit * Float(z) - positionShift)
-                    geometryNode.addChildNode(boxNode)
+                    geometryNode2.addChildNode(boxNode)
                 }
             }
         }
@@ -187,7 +191,7 @@ class ViewController: UIViewController, ViewProtocol {
                     let cellPosition = CubeModel.getCellRenderCoordinates(side: side.side, cubeSize: side.size, x: x, y: y, shift: positionShift)
                     let cellNode = SCNNode(geometry: cellGeometry)
                     cellNode.position = SCNVector3Make(cellPosition.x, cellPosition.y, cellPosition.z)
-                    geometryNode.addChildNode(cellNode)
+                    geometryNode2.addChildNode(cellNode)
                 }
             }
         }
