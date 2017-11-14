@@ -12,4 +12,6 @@ protocol ModelProtocol: class {
     init?(cubeSize: Int)
     func getCubeSize() -> Int
     func getCube() -> Cube?
+    func cellHit(_ cellName: String)
+    func cellHitsDidEnd()
 }

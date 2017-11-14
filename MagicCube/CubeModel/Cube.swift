@@ -38,4 +38,31 @@ class Cube {
     public func getSides() -> [CubeModel.Sides: CubeSide] {
         return sides
     }
+    
+    public func turnLine(_ cells: [String]){
+        if cells.count == 2 {
+            let cell1 = CubeModel.parceCellName(name: cells[0])
+            let cell2 = CubeModel.parceCellName(name: cells[1])
+            
+            if let c1 = cell1 {
+                if let c2 = cell2 {
+                    if c1.side == c2.side {
+                        if c1.row == c2.row && c1.column != c2.column {
+                            turnHorizontalLine(side: c1.side, row: c1.row, forward: c2.column > c1.column)
+                        } else if c1.row != c2.row && c1.column == c2.column {
+                            turnVerticalLine(side: c1.side, column: c1.column, forward: c2.row > c1.row)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func turnHorizontalLine(side: CubeModel.Sides, row: Int, forward: Bool) {
+        print("Turn horizontal line: \(side), \(row), \(forward)")
+    }
+    
+    private func turnVerticalLine(side: CubeModel.Sides, column: Int, forward: Bool) {
+        print("Turn vertical line: \(side), \(column), \(forward)")
+    }
 }

@@ -109,4 +109,27 @@ class Magic_Cube_Tests: XCTestCase {
         checkSolvedCube(size: 3)
         checkSolvedCube(size: 4)
     }
+    
+    func testCellName() {
+        XCTAssertEqual("Top,0,0", CubeModel.getCellName(side: .Top, row: 0, column: 0))
+        XCTAssertEqual("Top,3,1", CubeModel.getCellName(side: .Top, row: 3, column: 1))
+        XCTAssertEqual("Bottom,10,2", CubeModel.getCellName(side: .Bottom, row: 10, column: 2))
+        XCTAssertEqual("Left,18,13", CubeModel.getCellName(side: .Left, row: 18, column: 13))
+        XCTAssertEqual("Right,5,11", CubeModel.getCellName(side: .Right, row: 5, column: 11))
+        XCTAssertEqual("Front,7,7", CubeModel.getCellName(side: .Front, row: 7, column: 7))
+        XCTAssertEqual("Rear,2,10", CubeModel.getCellName(side: .Rear, row: 2, column: 10))
+        
+        XCTAssert((CubeModel.Sides.Top, 0, 0) == CubeModel.parceCellName(name: "Top,0,0")!)
+        XCTAssert((CubeModel.Sides.Bottom, 1, 0) == CubeModel.parceCellName(name: "Bottom,1,0")!)
+        XCTAssert((CubeModel.Sides.Left, 20, 10) == CubeModel.parceCellName(name: "Left,20,10")!)
+        XCTAssert((CubeModel.Sides.Right, 12, 10) == CubeModel.parceCellName(name: "Right,12,10")!)
+        XCTAssert((CubeModel.Sides.Front, 0, 4) == CubeModel.parceCellName(name: "Front,0,4")!)
+        XCTAssert((CubeModel.Sides.Rear, 14, 2) == CubeModel.parceCellName(name: "Rear,14,2")!)
+        XCTAssert(nil == CubeModel.parceCellName(name: "First,0,0"))
+        XCTAssert(nil == CubeModel.parceCellName(name: "Top,,0"))
+        XCTAssert(nil == CubeModel.parceCellName(name: "Top,"))
+        XCTAssert(nil == CubeModel.parceCellName(name: "Top,Second,Third"))
+        XCTAssert(nil == CubeModel.parceCellName(name: ""))
+        
+    }
 }

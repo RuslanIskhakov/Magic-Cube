@@ -9,7 +9,7 @@
 import Foundation
 
 class ViewPresenter: PresenterProtocol {
-    
+
     private static var sharedInstance: PresenterProtocol?
     
     public static func newSharedInstance(model: ModelProtocol) -> PresenterProtocol? {
@@ -50,5 +50,13 @@ class ViewPresenter: PresenterProtocol {
     
     deinit {
         print("Presenter Deinit")
+    }
+    
+    func cellHit(cellName: String) {
+        model!.cellHit(cellName)
+    }
+    
+    func cellHitsDidEnd() {
+        model!.cellHitsDidEnd()
     }
 }

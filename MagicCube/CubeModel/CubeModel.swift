@@ -44,6 +44,12 @@ struct CubeModel {
         case Vertical
     }
     
+    enum PanGestureType {
+        case None
+        case CubeMove
+        case GeometryRotate
+    }
+    
     public static let neighboringSides: Dictionary<Sides, [Sides]> = [
         Sides.Top: [.Left, .Rear, .Right, .Front],
         Sides.Front: [.Left, .Top, .Right, .Bottom],
@@ -60,6 +66,24 @@ struct CubeModel {
         Sides.Left: UIColor.green,
         Sides.Right: UIColor.blue,
         Sides.Bottom: UIColor.yellow
+    ]
+    
+    public static let sideToCodeName: Dictionary<Sides, String> = [
+        Sides.Top: "Top",
+        Sides.Front: "Front",
+        Sides.Rear: "Rear",
+        Sides.Left: "Left",
+        Sides.Right: "Right",
+        Sides.Bottom: "Bottom"
+    ]
+    
+    public static let codeNameToSide: Dictionary<String, Sides> = [
+        "Top": Sides.Top,
+        "Front": Sides.Front,
+        "Rear": Sides.Rear,
+        "Left": Sides.Left,
+        "Right": Sides.Right,
+        "Bottom": Sides.Bottom
     ]
     
     public static func getCubeRenderingCoordinatesShift(cubeSize: Int) -> Float {
@@ -118,4 +142,25 @@ struct CubeModel {
         .Left: (CellThickness, CellWidth, CellWidth),
         .Right: (CellThickness, CellWidth, CellWidth)
     ]
+    
+    public static func getCellName(side: Sides, row: Int, column:Int) -> String {
+        var result = sideToCodeName[side]
+        result! += "," + String(row)
+        result! += "," + String(column)
+        return result!
+    }
+    
+    public static func parceCellName(name: String) -> (side: Sides, row: Int, column: Int)? {
+        let parsedItems = name.components(separatedBy: ",")
+        if 3==parsedItems.count {
+            if  codeNameToSide.keys.contains(parsedItems[0]) {
+                let row = Int(parsedItems[1])
+                let column = Int(parsedItems[2])
+                if nil != row && nil != column {
+                    return (codeNameToSide[parsedItems[0]]!, row!, column!)
+                }
+            }
+        }
+        return nil
+    }
 }

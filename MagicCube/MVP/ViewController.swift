@@ -26,6 +26,8 @@ class ViewController: UIViewController, ViewProtocol {
     var geometryNode1: SCNNode = SCNNode()
     var geometryNode2: SCNNode = SCNNode()
     var scene: SCNScene = SCNScene()
+    var gestureType: CubeModel.PanGestureType = .None
+    var hitCellName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,19 +118,51 @@ class ViewController: UIViewController, ViewProtocol {
     @objc
     func panGesture(sender: UIPanGestureRecognizer) {
         
-        let translation = sender.translation(in: sceneView)
-        let newXAngle = -(Float)(translation.y)*(Float)(Double.pi)/180.0
-        let newYAngle = -(Float)(translation.x)*(Float)(Double.pi)/180.0
-        let xAngle = SCNMatrix4MakeRotation(currentXAngle + newXAngle, 1, 0, 0)
-        let yAngle = SCNMatrix4MakeRotation(currentYAngle + newYAngle, 0, 1, 0)
-        let zAngle = SCNMatrix4MakeRotation(0, 0, 0, 0)
         
-        let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
-        geometryNode1.pivot = rotationMatrix
         
-        if sender.state == UIGestureRecognizerState.ended {
-            currentXAngle += newXAngle
-            currentYAngle += newYAngle
+        if sender.state == UIGestureRecognizerState.began {
+            let location = sender.location(in: sceneView)
+            let hitNodes = sceneView.hitTest(location)
+            if hitNodes.count>0 {
+                gestureType = .CubeMove
+            } else {
+                gestureType = .GeometryRotate
+            }
+        }
+        
+        if .GeometryRotate == gestureType {
+            let translation = sender.translation(in: sceneView)
+            let newXAngle = -(Float)(translation.y)*(Float)(Double.pi)/180.0
+            let newYAngle = -(Float)(translation.x)*(Float)(Double.pi)/180.0
+            let xAngle = SCNMatrix4MakeRotation(currentXAngle + newXAngle, 1, 0, 0)
+            let yAngle = SCNMatrix4MakeRotation(currentYAngle + newYAngle, 0, 1, 0)
+            let zAngle = SCNMatrix4MakeRotation(0, 0, 0, 0)
+            
+            let rotationMatrix = SCNMatrix4Mult(SCNMatrix4Mult(xAngle, yAngle), zAngle)
+            geometryNode1.pivot = rotationMatrix
+            
+            if sender.state == UIGestureRecognizerState.ended {
+                currentXAngle += newXAngle
+                currentYAngle += newYAngle
+                gestureType = .None
+            }
+        }
+        
+        if .CubeMove == gestureType {
+            let location = sender.location(in: sceneView)
+            let hitNodes = sceneView.hitTest(location)
+            if let firstNode = hitNodes.first {
+                if nil != firstNode.node.name && hitCellName != firstNode.node.name {
+                    hitCellName = firstNode.node.name!
+                    presenter?.cellHit(cellName: hitCellName)
+                }
+            }
+            
+            if sender.state == UIGestureRecognizerState.ended {
+                gestureType = .None
+                hitCellName = ""
+                presenter?.cellHitsDidEnd()
+            }
         }
     }
 
@@ -191,6 +225,7 @@ class ViewController: UIViewController, ViewProtocol {
                     let cellPosition = CubeModel.getCellRenderCoordinates(side: side.side, cubeSize: side.size, x: x, y: y, shift: positionShift)
                     let cellNode = SCNNode(geometry: cellGeometry)
                     cellNode.position = SCNVector3Make(cellPosition.x, cellPosition.y, cellPosition.z)
+                    cellNode.name = CubeModel.getCellName(side: side.side, row: y, column: x)
                     geometryNode2.addChildNode(cellNode)
                 }
             }

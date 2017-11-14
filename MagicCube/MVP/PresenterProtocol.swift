@@ -12,4 +12,6 @@ protocol PresenterProtocol: class {
     init(model: ModelProtocol)
     func bindView(view: ViewProtocol)
     func unbindView(view: ViewProtocol)
+    func cellHit(cellName: String)
+    func cellHitsDidEnd()
 }
