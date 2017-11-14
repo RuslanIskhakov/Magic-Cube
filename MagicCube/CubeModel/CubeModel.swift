@@ -80,7 +80,7 @@ struct CubeModel {
                 return (
                     ScaleUnit * Float(x) - shift,
                     ScaleUnit * (0.5 - Float(cubeSize)) + shift,
-                    ScaleUnit * Float(y) - shift
+                    -ScaleUnit * Float(y) + shift
                 )
             case .Front:
                 return (
