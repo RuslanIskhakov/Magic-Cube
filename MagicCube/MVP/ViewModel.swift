@@ -10,6 +10,7 @@ import Foundation
 
 class ViewModel: ModelProtocol{
 
+    private var presenter: PresenterProtocol?
     private var cube: Cube?
     private var cubeSize: Int
     private var cellHits: [String] = ["", ""]
@@ -22,6 +23,10 @@ class ViewModel: ModelProtocol{
         }
     }
 
+    public func setPresenter(presenter: PresenterProtocol?) {
+        self.presenter = presenter
+    }
+    
     func getCubeSize() -> Int {
         return cubeSize
     }
@@ -37,6 +42,7 @@ class ViewModel: ModelProtocol{
             
             if "" != cellHits[0] {
                 cube!.turnLine(cellHits)
+                presenter!.renderCube()
             }
         }
     }

@@ -169,6 +169,14 @@ class ViewController: UIViewController, ViewProtocol {
     func renderCube(cubeToRender: Cube?) {
         
         if let cube = cubeToRender {
+            
+            let childnodes = geometryNode2.childNodes
+            if childnodes.count>0 {
+                for node in childnodes {
+                    node.removeFromParentNode()
+                }
+            }
+            
             let cubeSize = cube.size
             
             renderCubeBase(cubeSize: cubeSize)
@@ -194,8 +202,8 @@ class ViewController: UIViewController, ViewProtocol {
                                              height: CubeModel.CellBaseSize,
                                              length: CubeModel.CellBaseSize,
                                              chamferRadius: CubeModel.CellbaseChamferRadius)
-                    boxGeometry.firstMaterial?.diffuse.contents = UIColor.black
-                    boxGeometry.firstMaterial?.specular.contents = UIColor.white
+                    boxGeometry.firstMaterial!.diffuse.contents = UIColor.black
+                    boxGeometry.firstMaterial!.specular.contents = UIColor.white
                     
                     let boxNode = SCNNode(geometry: boxGeometry)
                     boxNode.position = SCNVector3Make(
@@ -219,8 +227,8 @@ class ViewController: UIViewController, ViewProtocol {
                                               height: sizes.ySize,
                                               length: sizes.zSize,
                                               chamferRadius: CubeModel.CellChamferRadius)
-                    cellGeometry.firstMaterial?.diffuse.contents = side.getCells()[y*side.size+x].color
-                    cellGeometry.firstMaterial?.specular.contents = UIColor.white
+                    cellGeometry.firstMaterial!.diffuse.contents = CubeModel.cellColors[side.getCells()[y][x].color]!
+                    cellGeometry.firstMaterial!.specular.contents = UIColor.white
                     
                     let cellPosition = CubeModel.getCellRenderCoordinates(side: side.side, cubeSize: side.size, x: x, y: y, shift: positionShift)
                     let cellNode = SCNNode(geometry: cellGeometry)

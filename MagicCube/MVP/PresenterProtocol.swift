@@ -14,4 +14,5 @@ protocol PresenterProtocol: class {
     func unbindView(view: ViewProtocol)
     func cellHit(cellName: String)
     func cellHitsDidEnd()
+    func renderCube()
 }

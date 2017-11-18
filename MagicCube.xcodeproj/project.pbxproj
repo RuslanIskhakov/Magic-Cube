@@ -16,7 +16,6 @@
 		BA2951271FB417560071205C /* CubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951261FB417560071205C /* CubeModel.swift */; };
 		BA29512D1FB42D800071205C /* CubeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29512C1FB42D800071205C /* CubeLine.swift */; };
 		BA29512F1FB42F5A0071205C /* CubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA29512E1FB42F5A0071205C /* CubeCell.swift */; };
-		BA2951311FB43E900071205C /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951301FB43E900071205C /* CellPosition.swift */; };
 		BA2951331FB4407F0071205C /* CubeSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951321FB4407F0071205C /* CubeSide.swift */; };
 		BA2951351FB4425B0071205C /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951341FB4425B0071205C /* Cube.swift */; };
 		BA2951371FB45F420071205C /* Magic_Cube_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */; };
@@ -60,7 +59,6 @@
 		BA2951261FB417560071205C /* CubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeModel.swift; sourceTree = "<group>"; };
 		BA29512C1FB42D800071205C /* CubeLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeLine.swift; sourceTree = "<group>"; };
 		BA29512E1FB42F5A0071205C /* CubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeCell.swift; sourceTree = "<group>"; };
-		BA2951301FB43E900071205C /* CellPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
 		BA2951321FB4407F0071205C /* CubeSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSide.swift; sourceTree = "<group>"; };
 		BA2951341FB4425B0071205C /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BA2951361FB45F420071205C /* Magic_Cube_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_Cube_Tests.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				BA2951261FB417560071205C /* CubeModel.swift */,
 				BA29512C1FB42D800071205C /* CubeLine.swift */,
 				BA29512E1FB42F5A0071205C /* CubeCell.swift */,
-				BA2951301FB43E900071205C /* CellPosition.swift */,
 				BA2951321FB4407F0071205C /* CubeSide.swift */,
 				BA2951341FB4425B0071205C /* Cube.swift */,
 			);
@@ -312,7 +309,6 @@
 				BA2951331FB4407F0071205C /* CubeSide.swift in Sources */,
 				BA29512D1FB42D800071205C /* CubeLine.swift in Sources */,
 				BA2951271FB417560071205C /* CubeModel.swift in Sources */,
-				BA2951311FB43E900071205C /* CellPosition.swift in Sources */,
 				BAFC18B61FB565D700195F03 /* ViewModel.swift in Sources */,
 				BA2951351FB4425B0071205C /* Cube.swift in Sources */,
 				BAFC18BC1FB5810E00195F03 /* ModelProtocol.swift in Sources */,

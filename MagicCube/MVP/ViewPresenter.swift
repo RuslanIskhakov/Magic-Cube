@@ -26,6 +26,7 @@ class ViewPresenter: PresenterProtocol {
     required init(model: ModelProtocol) {
         print("Presenter Init")
         self.model = model
+        model.setPresenter(presenter: self)
     }
     
     func bindView(view: ViewProtocol) {
@@ -58,5 +59,9 @@ class ViewPresenter: PresenterProtocol {
     
     func cellHitsDidEnd() {
         model!.cellHitsDidEnd()
+    }
+    
+    func renderCube() {
+        view!.renderCube(cubeToRender: model!.getCube())
     }
 }

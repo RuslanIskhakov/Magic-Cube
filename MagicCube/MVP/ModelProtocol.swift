@@ -10,6 +10,7 @@ import Foundation
 
 protocol ModelProtocol: class {
     init?(cubeSize: Int)
+    func setPresenter(presenter: PresenterProtocol?)
     func getCubeSize() -> Int
     func getCube() -> Cube?
     func cellHit(_ cellName: String)

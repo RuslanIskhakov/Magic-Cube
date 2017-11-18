@@ -10,46 +10,13 @@ import UIKit
 import Foundation
 
 class CubeCell {
-    let color: UIColor
+    let color: CubeModel.Colors
     
-    private var position: CellPosition? {
-        didSet {
-            edgeType = position?.getCellEdgeType()
-        }
-    }
-    private var edgeType: CubeModel.CellEdgeType?
-    
-    public init?(color: UIColor) {
-        if CubeModel.sideColors.values.contains(color) {
-            self.color = color
-            self.position = nil
-            self.edgeType = nil
-        } else {
-            return nil
-        }
+    public init(color: CubeModel.Colors) {
+        self.color = color
     }
     
     public init(side: CubeModel.Sides) {
         self.color = CubeModel.sideColors[side]!
-        self.position = nil
-        self.edgeType = nil
-    }
-    
-    public init?(side: CubeModel.Sides, row: Int, column: Int, cubeSize: Int) {
-        if cubeSize>1 && row>=0 && row<cubeSize && column>=0 && column<cubeSize {
-            self.color = CubeModel.sideColors[side]!
-            self.position = CellPosition(row: row, column: column, cubeSize: cubeSize)
-            self.edgeType = nil
-        } else {
-            return nil
-        }
-    }
-    
-    public func getPosition() -> CellPosition? {
-        return position
-    }
-    
-    public func getEdgeType() -> CubeModel.CellEdgeType? {
-        return edgeType
     }
 }

@@ -33,12 +33,6 @@ struct CubeModel {
         case Bottom
     }
     
-    enum CellEdgeType {
-        case Edge
-        case Corner
-        case NonEdge
-    }
-    
     enum LineOrientation {
         case Horizontal
         case Vertical
@@ -50,6 +44,11 @@ struct CubeModel {
         case GeometryRotate
     }
     
+    enum SideTurnDirections {
+        case Clockwise
+        case CounterClockwise
+    }
+    
     public static let neighboringSides: Dictionary<Sides, [Sides]> = [
         Sides.Top: [.Left, .Rear, .Right, .Front],
         Sides.Front: [.Left, .Top, .Right, .Bottom],
@@ -59,13 +58,31 @@ struct CubeModel {
         Sides.Bottom: [.Left, .Front, .Right, .Rear]
     ]
     
-    public static let sideColors: Dictionary<Sides, UIColor> = [
-        Sides.Top: UIColor.white,
-        Sides.Front: UIColor.red,
-        Sides.Rear: UIColor.orange,
-        Sides.Left: UIColor.green,
-        Sides.Right: UIColor.blue,
-        Sides.Bottom: UIColor.yellow
+    enum Colors {
+        case White
+        case Red
+        case Orange
+        case Green
+        case Blue
+        case Yellow
+    }
+    
+    public static let cellColors: [Colors: UIColor] = [
+        .White: UIColor.white,
+        .Red: UIColor.red,
+        .Orange: UIColor.orange,
+        .Green: UIColor.green,
+        .Blue: UIColor.blue,
+        .Yellow: UIColor.yellow
+    ]
+    
+    public static let sideColors: Dictionary<Sides, Colors> = [
+        Sides.Top: .White,
+        Sides.Front: .Red,
+        Sides.Rear: .Orange,
+        Sides.Left: .Green,
+        Sides.Right: .Blue,
+        Sides.Bottom: .Yellow
     ]
     
     public static let sideToCodeName: Dictionary<Sides, String> = [
@@ -162,5 +179,103 @@ struct CubeModel {
             }
         }
         return nil
+    }
+    
+    enum CellsIndexOrder {
+        case Forward
+        case Backward
+    }
+    
+    struct LineTurnInfo {
+        let side: Sides
+        let lineOrientation: LineOrientation //within a side
+        let indexOrder: CellsIndexOrder //Starting from plane
+        let cellsIndexOrder: CellsIndexOrder //Clockwise direction
+    }
+    
+    enum Planes {
+        case VerticalFront
+        case VerticalSide
+        case Horizontal
+    }
+    
+    public static let SidesToPlainMapping: [Sides: Planes] = [
+        .Front: .VerticalFront,
+        .Rear: .VerticalFront,
+        .Top: .Horizontal,
+        .Bottom: .Horizontal,
+        .Left: .VerticalSide,
+        .Right: .VerticalSide
+    ]
+    
+    public static let SideLinesToPlanesMapping: [Sides: [LineOrientation: Planes]] = [
+        .Front: [
+            .Vertical: .VerticalSide,
+            .Horizontal: .Horizontal
+        ],
+        .Rear: [
+            .Vertical: .VerticalSide,
+            .Horizontal: .Horizontal
+        ],
+        .Top: [
+            .Vertical: .VerticalSide,
+            .Horizontal: .VerticalFront
+        ],
+        .Bottom: [
+            .Vertical: .VerticalSide,
+            .Horizontal: .VerticalFront
+        ],
+        .Left: [
+            .Vertical: .VerticalFront,
+            .Horizontal: .Horizontal
+        ],
+        .Right: [
+            .Vertical: .VerticalFront,
+            .Horizontal: .Horizontal
+        ],
+    ]
+    
+    public static let PlanesTurnMaps: [Planes: [LineTurnInfo]] = [
+        .VerticalFront: [
+            LineTurnInfo(side: .Top, lineOrientation: .Horizontal, indexOrder: .Backward, cellsIndexOrder: .Forward),
+            LineTurnInfo(side: .Right, lineOrientation: .Vertical, indexOrder: .Forward, cellsIndexOrder: .Forward),
+            LineTurnInfo(side: .Bottom, lineOrientation: .Horizontal, indexOrder: .Forward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Left, lineOrientation: .Vertical, indexOrder: .Backward, cellsIndexOrder: .Backward)
+        ],
+        .VerticalSide: [
+            LineTurnInfo(side: .Top, lineOrientation: .Vertical, indexOrder: .Backward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Rear, lineOrientation: .Vertical, indexOrder: .Forward, cellsIndexOrder: .Forward),
+            LineTurnInfo(side: .Bottom, lineOrientation: .Vertical, indexOrder: .Backward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Front, lineOrientation: .Vertical, indexOrder: .Backward, cellsIndexOrder: .Backward)
+        ],
+        .Horizontal: [
+            LineTurnInfo(side: .Right, lineOrientation: .Horizontal, indexOrder: .Forward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Front, lineOrientation: .Horizontal, indexOrder: .Forward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Left, lineOrientation: .Horizontal, indexOrder: .Forward, cellsIndexOrder: .Backward),
+            LineTurnInfo(side: .Rear, lineOrientation: .Horizontal, indexOrder: .Forward, cellsIndexOrder: .Backward)
+        ],
+    ]
+    
+    public static func isInvertedDirection(gestureIsForward: Bool, indexOrder: CubeModel.CellsIndexOrder) -> Bool {
+        return (gestureIsForward != (indexOrder == .Forward))
+    }
+    
+    public static func getFinalIndexOrder(isInvertedDirection: Bool, indexOrder: CubeModel.CellsIndexOrder) -> CubeModel.CellsIndexOrder {
+        return (isInvertedDirection ? (indexOrder == .Forward ? .Backward : .Forward) : indexOrder)
+    }
+    
+    struct LineTurnParameters {
+        let side: Sides
+        let index: Int
+        let horizontal: Bool
+        let forward: Bool
+        
+        public func getReverseTurnParameters() -> LineTurnParameters {
+            return LineTurnParameters(side: side, index: index, horizontal: horizontal, forward: !forward)
+        }
+        
+        public func debugDescription() -> String {
+            return "Side: \(side), index: \(index), horizontal: \(horizontal), forward: \(forward)"
+        }
     }
 }
