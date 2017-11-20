@@ -7,9 +7,9 @@ The project uses:<br/>
 Swift<br/>
 SceneKit<br/>
 MVP<br/>
-UnitTests
+Unit Tests
 
-<img src="https://user-images.githubusercontent.com/4405543/32983559-5818e266-ccb8-11e7-9fb2-738450a7a24e.png" width="300">  <img src="https://user-images.githubusercontent.com/4405543/32983558-56bf2f92-ccb8-11e7-91cb-3f518ff52df0.png" width="300">
+<img src="https://user-images.githubusercontent.com/4405543/33003511-f9069180-cddc-11e7-9ff3-2118a37aacc5.PNG" width="300"> <img src="https://user-images.githubusercontent.com/4405543/33003513-f9264c5a-cddc-11e7-9cef-a205e37e686d.PNG" width="300">
 
 
-<img src="https://user-images.githubusercontent.com/4405543/32983561-59dd30b6-ccb8-11e7-86ec-15e14380667e.png" width="600">
+<img src="https://user-images.githubusercontent.com/4405543/33003514-f943089a-cddc-11e7-8696-a2fb21929b34.PNG" width="600">
