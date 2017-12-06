@@ -20,7 +20,7 @@ class ViewPresenter: PresenterProtocol {
     }
     
     private let model: ModelProtocol?
-    private var view: ViewProtocol?
+    private weak var view: ViewProtocol?
     private var isBound = false
     
     required init(model: ModelProtocol) {

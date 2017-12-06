@@ -10,7 +10,7 @@ import Foundation
 
 class ViewModel: ModelProtocol{
 
-    private var presenter: PresenterProtocol?
+    private weak var presenter: PresenterProtocol?
     private var cube: Cube?
     private var cubeSize: Int
     private var cellHits: [String] = ["", ""]
