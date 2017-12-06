@@ -41,8 +41,8 @@ class ViewModel: ModelProtocol{
             cellHits[1] = cellName
             
             if "" != cellHits[0] {
-                cube!.turnLine(cellHits)
-                presenter!.renderCube()
+                cube?.turnLine(cellHits)
+                presenter?.renderCube()
             }
         }
     }

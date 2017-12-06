@@ -59,7 +59,7 @@ class Cube {
     }
     
     public func turnLine(side: CubeModel.Sides, index: Int, horizontal: Bool, forward: Bool) {
-        let plane = CubeModel.SideLinesToPlanesMapping[side]![(horizontal ? CubeModel.LineOrientation.Horizontal : CubeModel.LineOrientation.Vertical)]
+        let plane = CubeModel.SideLinesToPlanesMapping[side]?[(horizontal ? CubeModel.LineOrientation.Horizontal : CubeModel.LineOrientation.Vertical)]
         let planeTurnMaps = CubeModel.PlanesTurnMaps[plane!]
         var invertedDirection = false
         var planeIndex = 0

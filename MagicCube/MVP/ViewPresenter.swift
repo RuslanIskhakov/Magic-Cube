@@ -54,14 +54,14 @@ class ViewPresenter: PresenterProtocol {
     }
     
     func cellHit(cellName: String) {
-        model!.cellHit(cellName)
+        model?.cellHit(cellName)
     }
     
     func cellHitsDidEnd() {
-        model!.cellHitsDidEnd()
+        model?.cellHitsDidEnd()
     }
     
     func renderCube() {
-        view!.renderCube(cubeToRender: model!.getCube())
+        view?.renderCube(cubeToRender: model?.getCube())
     }
 }

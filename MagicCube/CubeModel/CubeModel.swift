@@ -160,11 +160,11 @@ struct CubeModel {
         .Right: (CellThickness, CellWidth, CellWidth)
     ]
     
-    public static func getCellName(side: Sides, row: Int, column:Int) -> String {
+    public static func getCellName(side: Sides, row: Int, column:Int) -> String? {
         var result = sideToCodeName[side]
-        result! += "," + String(row)
-        result! += "," + String(column)
-        return result!
+        result? += "," + String(row)
+        result? += "," + String(column)
+        return result
     }
     
     public static func parceCellName(name: String) -> (side: Sides, row: Int, column: Int)? {

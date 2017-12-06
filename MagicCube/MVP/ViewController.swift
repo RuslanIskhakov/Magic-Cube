@@ -91,8 +91,8 @@ class ViewController: UIViewController, ViewProtocol {
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLight.LightType.ambient
-        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
+        ambientLightNode.light?.type = SCNLight.LightType.ambient
+        ambientLightNode.light?.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         
         addOmniLight(0, 50, 50)
@@ -109,8 +109,8 @@ class ViewController: UIViewController, ViewProtocol {
     private func addOmniLight(_ x: Float, _ y: Float, _ z: Float) {
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLight.LightType.omni
-        omniLightNode.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode.light?.type = SCNLight.LightType.omni
+        omniLightNode.light?.color = UIColor(white: 0.5, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(x, y, z)
         scene.rootNode.addChildNode(omniLightNode)
     }
@@ -202,8 +202,8 @@ class ViewController: UIViewController, ViewProtocol {
                                              height: CubeModel.CellBaseSize,
                                              length: CubeModel.CellBaseSize,
                                              chamferRadius: CubeModel.CellbaseChamferRadius)
-                    boxGeometry.firstMaterial!.diffuse.contents = UIColor.black
-                    boxGeometry.firstMaterial!.specular.contents = UIColor.white
+                    boxGeometry.firstMaterial?.diffuse.contents = UIColor.black
+                    boxGeometry.firstMaterial?.specular.contents = UIColor.white
                     
                     let boxNode = SCNNode(geometry: boxGeometry)
                     boxNode.position = SCNVector3Make(
@@ -227,8 +227,8 @@ class ViewController: UIViewController, ViewProtocol {
                                               height: sizes.ySize,
                                               length: sizes.zSize,
                                               chamferRadius: CubeModel.CellChamferRadius)
-                    cellGeometry.firstMaterial!.diffuse.contents = CubeModel.cellColors[side.getCells()[y][x].color]!
-                    cellGeometry.firstMaterial!.specular.contents = UIColor.white
+                    cellGeometry.firstMaterial?.diffuse.contents = CubeModel.cellColors[side.getCells()[y][x].color]
+                    cellGeometry.firstMaterial?.specular.contents = UIColor.white
                     
                     let cellPosition = CubeModel.getCellRenderCoordinates(side: side.side, cubeSize: side.size, x: x, y: y, shift: positionShift)
                     let cellNode = SCNNode(geometry: cellGeometry)
